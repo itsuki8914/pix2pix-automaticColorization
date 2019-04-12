@@ -9,8 +9,20 @@ original implementation: https://github.com/phillipi/pix2pix
 
 ## Usage
 put the images in the folder named "data". They are used for training. 
+
+crop.py helps to randomly crop pictures from  the folder you asigned.
+
+example
+```
+python crop.py pictures data
+```
        
 put the image in a folder named "val". They are used for validation.
+
+example
+```
+python crop.py for_valid val
+```
 
 like this
 ```
@@ -44,8 +56,14 @@ python pred.py test
 ```
 
 ## Result examples
-input
+upper left: black and white picure
 
-<img src = 'ouput/5_xval.png' width = '200px'>
+upper right: given hints
 
+under left: inference by pix2pix
+
+under right: Ground Truth
+<img src = 'baboons.png' width = '200px'>
+
+<img src = 'paprikas.png' width = '200px'>
 
