@@ -10,16 +10,16 @@ original implementation: https://github.com/phillipi/pix2pix
 ## Usage
 put the images in the folder named "data". They are used for training. 
 
-crop.py helps to randomly crop pictures from  the folder you asigned.
+crop.py helps to randomly crop pictures from  the folder you assigned.
 
-example
+example:
 ```
 python crop.py pictures data
 ```
        
 put the image in a folder named "val". They are used for validation.
 
-example
+example:
 ```
 python crop.py for_valid val
 ```
