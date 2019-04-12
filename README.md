@@ -56,7 +56,7 @@ python pred.py test
 ```
 
 ## Result examples
-upper left: black and white picure
+upper left: black and white picture
 
 upper right: given hints
 
