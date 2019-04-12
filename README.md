@@ -63,7 +63,8 @@ upper right: given hints
 under left: inference by pix2pix
 
 under right: Ground Truth
-<img src = 'baboons.png' width = '200px'>
 
-<img src = 'paprikas.png' width = '200px'>
+<img src = 'baboons.png' >
+
+<img src = 'paprikas.png' >
 
