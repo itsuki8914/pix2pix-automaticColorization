@@ -25,7 +25,7 @@ def main(folder="test"):
     start = time.time()
 
     x = tf.placeholder(tf.float32, [1, input_size, input_size, 3])
-    y = buildGenerator(x,reuse=False)
+    y = buildGenerator(x,reuse=False,isTraining=False)
     #fake_y = buildDiscriminator(y,y,isTraining=True,nBatch=bs)
 
     sess = tf.Session()

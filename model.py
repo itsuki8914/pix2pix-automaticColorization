@@ -89,54 +89,54 @@ def buildGenerator(x,reuse=False,isTraining=True,name="Generator"):
 
         # 1/1
 
-        h = _conv_layer(x, 3, 32, 1, 7,"1-1e_g")
-        h = _conv_layer(h, 32, 32, 1, 5,"1-2e_g")
+        h = _conv_layer(x, 3, 32, 1, 7,"1-1e_g", isTraining=isTraining)
+        h = _conv_layer(h, 32, 32, 1, 5,"1-2e_g", isTraining=isTraining)
         enc1 = h
         # -> 1/2
-        h = _conv_layer(h, 32, 64, 2, 5,"2-1e_g")
-        h = _conv_layer(h, 64, 64, 1, 5,"2-2e_g")
-        h = _conv_layer(h, 64, 64, 1, 5,"2-3e_g")
+        h = _conv_layer(h, 32, 64, 2, 5,"2-1e_g", isTraining=isTraining)
+        h = _conv_layer(h, 64, 64, 1, 5,"2-2e_g", isTraining=isTraining)
+        h = _conv_layer(h, 64, 64, 1, 5,"2-3e_g", isTraining=isTraining)
         enc2 = h
         # -> 1/4
-        h = _conv_layer(h, 64, 128, 2, 5,"3-1e_g")
-        h = _conv_layer(h, 128, 128, 1, 5,"3-2e_g")
-        h = _conv_layer(h, 128, 128, 1, 5,"3-3e_g")
+        h = _conv_layer(h, 64, 128, 2, 5,"3-1e_g", isTraining=isTraining)
+        h = _conv_layer(h, 128, 128, 1, 5,"3-2e_g", isTraining=isTraining)
+        h = _conv_layer(h, 128, 128, 1, 5,"3-3e_g", isTraining=isTraining)
         enc3 = h
         # ->1/8
-        h = _conv_layer(h, 128, 256, 2, 5,"4-1e_g")
-        h = _conv_layer(h, 256, 256, 1, 5,"4-2e_g")
-        h = _conv_layer(h, 256, 256, 1, 5,"4-3e_g")
+        h = _conv_layer(h, 128, 256, 2, 5,"4-1e_g", isTraining=isTraining)
+        h = _conv_layer(h, 256, 256, 1, 5,"4-2e_g", isTraining=isTraining)
+        h = _conv_layer(h, 256, 256, 1, 5,"4-3e_g", isTraining=isTraining)
         enc4 = h
         # -> 1/16
-        h = _conv_layer(h, 256, 256, 2, 5,"5-1e_g")
+        h = _conv_layer(h, 256, 256, 2, 5,"5-1e_g", isTraining=isTraining)
         enc5 = h
-        h = _conv_layer(h, 256, 256, 1, 5,"5-2e_g")
-        h = _conv_layer(h, 256, 256, 1, 5,"5-3e_g")
+        h = _conv_layer(h, 256, 256, 1, 5,"5-2e_g", isTraining=isTraining)
+        h = _conv_layer(h, 256, 256, 1, 5,"5-3e_g", isTraining=isTraining)
         h = h + enc5
         enc5 = h
-        h = _conv_layer(h, 256, 256, 1, 5,"5-4e_g")
-        h = _conv_layer(h, 256, 256, 1, 5,"5-5e_g")
+        h = _conv_layer(h, 256, 256, 1, 5,"5-4e_g", isTraining=isTraining)
+        h = _conv_layer(h, 256, 256, 1, 5,"5-5e_g", isTraining=isTraining)
         h = h + enc5
         # ->1/8
-        h = _deconv_layer(h, 256, 256, 2, 5, "5d_g")
+        h = _deconv_layer(h, 256, 256, 2, 5, "5d_g", isTraining=isTraining)
         h = tf.concat([h,enc4,],axis=3)
-        h = _conv_layer(h, 512, 256, 1, 5,"4-1d_g")
-        h = _conv_layer(h, 256, 256, 1, 5,"4-2d_g")
+        h = _conv_layer(h, 512, 256, 1, 5,"4-1d_g", isTraining=isTraining)
+        h = _conv_layer(h, 256, 256, 1, 5,"4-2d_g", isTraining=isTraining)
         # -> 1/4
-        h = _deconv_layer(h, 256, 128, 2, 5, "4d_g")
+        h = _deconv_layer(h, 256, 128, 2, 5, "4d_g", isTraining=isTraining)
         h = tf.concat([h,enc3],axis=3)
-        h = _conv_layer(h, 256, 128, 1, 5,"3-1d_g")
-        h = _conv_layer(h, 128, 128, 1, 5,"3-2d_g")
+        h = _conv_layer(h, 256, 128, 1, 5,"3-1d_g", isTraining=isTraining)
+        h = _conv_layer(h, 128, 128, 1, 5,"3-2d_g", isTraining=isTraining)
         # -> 1/2
-        h = _deconv_layer(h, 128, 64, 2, 5, "3d_g")
+        h = _deconv_layer(h, 128, 64, 2, 5, "3d_g", isTraining=isTraining)
         h = tf.concat([h,enc2],axis=3)
-        h = _conv_layer(h, 128, 64, 1, 5,"2-1d_g")
-        h = _conv_layer(h, 64, 64, 1, 5,"2-2d_g")
+        h = _conv_layer(h, 128, 64, 1, 5,"2-1d_g", isTraining=isTraining)
+        h = _conv_layer(h, 64, 64, 1, 5,"2-2d_g", isTraining=isTraining)
         # -> 1/1
-        h = _deconv_layer(h, 64, 32, 2, 5, "2d_g")
+        h = _deconv_layer(h, 64, 32, 2, 5, "2d_g", isTraining=isTraining)
         h = tf.concat([h,enc1],axis=3)
-        h = _conv_layer(h, 64, 32, 1, 5,"1-1d_g")
-        h = _conv_layer(h, 32, 32, 1, 5,"1-2d_g")
+        h = _conv_layer(h, 64, 32, 1, 5,"1-1d_g", isTraining=isTraining)
+        h = _conv_layer(h, 32, 32, 1, 5,"1-2d_g", isTraining=isTraining)
 
         conv_w, conv_b = _conv_variable([7,7,32,3],name="convo_g" )
         h = _conv2d(h,conv_w,stride=1) + conv_b
