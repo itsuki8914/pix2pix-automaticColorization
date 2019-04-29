@@ -87,7 +87,7 @@ def main():
     # sce gan
     d_loss_real = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=real_y,labels=tf.ones_like (real_y)))
     d_loss_fake = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=fake_y,labels=tf.zeros_like (fake_y)))
-    g_loss      = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=y,labels=tf.ones_like (y)))
+    g_loss      = tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(logits=fake_y,labels=tf.ones_like (fake_y)))
 
     # ls gan
     #d_loss_real = tf.reduce_mean((real_y-tf.ones_like (real_y))**2)
