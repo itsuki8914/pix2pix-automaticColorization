@@ -5,7 +5,7 @@ pix2pix page: https://phillipi.github.io/pix2pix/
 
 original paper: https://arxiv.org/abs/1611.07004
 
-original implementation: https://github.com/phillipi/pix2pix
+original(offical) implementation: https://github.com/phillipi/pix2pix
 
 ## Usage
 put the images in the folder named "data". They are used for training. 
